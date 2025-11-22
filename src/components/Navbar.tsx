@@ -48,7 +48,7 @@ export const Navbar = ({
                         {showAdminControls && isAdmin && handleLogout && (
                             <>
                                 <button
-                                    onClick={() => window.location.href = '/admin'}
+                                    onClick={() => window.location.href = '/#admin'}
                                     className="text-xs font-medium px-3 py-1 rounded-full bg-primary/20 border border-primary text-primary hover:bg-primary/30 transition-colors"
                                 >
                                     Admin Panel
