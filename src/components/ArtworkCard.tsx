@@ -1,4 +1,4 @@
-import { Calendar, Heart, Copy } from 'lucide-react';
+import { Calendar, Copy } from 'lucide-react';
 
 interface ArtworkCardProps {
   artwork: {
@@ -7,16 +7,16 @@ interface ArtworkCardProps {
     prompt: string;
     model: string;
     description: string;
-    likes: number;
+
     createdAt: { seconds: number };
     uploaderName?: string;
   };
   onCopy: (text: string) => void;
-  onLike: (id: string) => void;
+
   onClick: () => void;
 }
 
-export const ArtworkCard = ({ artwork, onCopy, onLike, onClick }: ArtworkCardProps) => {
+export const ArtworkCard = ({ artwork, onCopy, onClick }: ArtworkCardProps) => {
   return (
     <div className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 flex flex-col">
       <div
@@ -35,19 +35,6 @@ export const ArtworkCard = ({ artwork, onCopy, onLike, onClick }: ArtworkCardPro
             <span className="bg-primary/90 text-primary-foreground text-xs px-2 py-1 rounded backdrop-blur-sm">
               {artwork.model}
             </span>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onLike(artwork.id);
-              }}
-              className="flex items-center gap-1 text-foreground hover:text-primary transition-colors"
-            >
-              <Heart
-                size={18}
-                className={artwork.likes > 0 ? "fill-primary text-primary" : ""}
-              />
-              <span className="text-sm font-medium">{artwork.likes}</span>
-            </button>
           </div>
         </div>
       </div>

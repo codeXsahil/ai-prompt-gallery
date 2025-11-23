@@ -1,12 +1,13 @@
 
 import { useState, useEffect, useMemo } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import {
   Filter, Image as ImageIcon,
   Loader2, Upload
 } from 'lucide-react';
 import {
   collection, addDoc, serverTimestamp,
-  query, orderBy, onSnapshot, doc, updateDoc, increment
+  query, orderBy, onSnapshot, doc
 } from "firebase/firestore";
 import {
   signInAnonymously, onAuthStateChanged, signOut
@@ -17,7 +18,7 @@ import { Notification } from '@/components/Notification';
 import { UploadModal, UploadFormData } from '@/components/UploadModal';
 import { ArtworkCard } from '@/components/ArtworkCard';
 import { EmailGateModal } from '@/components/EmailGateModal';
-import { Navbar } from '@/components/Navbar';
+
 
 const MOCK_DATA = [
   {
@@ -26,7 +27,7 @@ const MOCK_DATA = [
     prompt: 'Cyberpunk city street at night, neon lights reflecting on wet pavement',
     model: 'Midjourney v6',
     description: 'Neo-Tokyo night drive',
-    likes: 124,
+
     createdAt: { seconds: 1709251200 }
   },
   {
@@ -35,7 +36,7 @@ const MOCK_DATA = [
     prompt: 'A cute robot gardener watering plants in a greenhouse',
     model: 'DALL-E 3',
     description: 'Eco-bot 3000',
-    likes: 89,
+
     createdAt: { seconds: 1709164800 }
   }
 ];
@@ -47,7 +48,7 @@ const Index = () => {
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { searchTerm } = useOutletContext<{ searchTerm: string }>();
   const [selectedModel, setSelectedModel] = useState('All');
   const [sortBy, setSortBy] = useState('newest');
   const [isEmailGateOpen, setIsEmailGateOpen] = useState(false);
@@ -56,7 +57,7 @@ const Index = () => {
     return sessionStorage.getItem('promptAccessGranted') === 'true';
   });
 
-  const isAdmin = !!(user && !user.isAnonymous);
+
 
   // Anti-debugging protection
   useEffect(() => {
@@ -147,12 +148,7 @@ const Index = () => {
     setTimeout(() => setNotification(null), 3000);
   };
 
-  const handleLogout = async () => {
-    if (!auth) return;
-    await signOut(auth);
-    await signInAnonymously(auth);
-    showNotification("Logged out");
-  };
+
 
   const handleCopy = (text: string) => {
     // Check if email has been submitted in this session
@@ -214,15 +210,7 @@ const Index = () => {
     }
   };
 
-  const handleLike = async (id: string) => {
-    if (!isConfigured || !user) return;
-    try {
-      const artRef = doc(db, "artworks", id);
-      await updateDoc(artRef, { likes: increment(1) });
-    } catch (error) {
-      console.error("Error liking:", error);
-    }
-  };
+
 
   const handleUpload = async (data: UploadFormData) => {
     if (!data.image || !data.prompt) {
@@ -243,7 +231,7 @@ const Index = () => {
         prompt: data.prompt,
         description: data.description,
         model: data.model,
-        likes: 0,
+
         createdAt: serverTimestamp(),
         uploaderId: user ? user.uid : 'anon',
         uploaderName: data.uploaderName,
@@ -280,8 +268,6 @@ const Index = () => {
 
     if (sortBy === 'oldest') {
       result.sort((a, b) => a.createdAt?.seconds - b.createdAt?.seconds);
-    } else if (sortBy === 'likes') {
-      result.sort((a, b) => b.likes - a.likes);
     } else {
       result.sort((a, b) => b.createdAt?.seconds - a.createdAt?.seconds);
     }
@@ -313,13 +299,7 @@ const Index = () => {
         <Notification message={notification.message} type={notification.type} />
       )}
 
-      {/* NAVBAR */}
-      <Navbar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        isAdmin={isAdmin}
-        handleLogout={handleLogout}
-      />
+
 
       {/* HERO */}
       <div className="relative bg-gradient-to-b from-card to-background border-b border-border">
@@ -371,7 +351,7 @@ const Index = () => {
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
-            <option value="likes">Most Liked</option>
+
           </select>
         </div>
       </div>
@@ -396,7 +376,7 @@ const Index = () => {
                 key={art.id}
                 artwork={art}
                 onCopy={handleCopy}
-                onLike={handleLike}
+
                 onClick={() => { }}
               />
             ))}

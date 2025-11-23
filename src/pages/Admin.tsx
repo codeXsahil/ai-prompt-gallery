@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   BarChart3, Trash2, Image as ImageIcon, Users,
-  TrendingUp, Eye, Heart, Upload, ArrowLeft, Loader2, Mail, Download,
+  TrendingUp, Eye, Upload, ArrowLeft, Loader2, Mail, Download,
   Check, X
 } from 'lucide-react';
 import {
@@ -29,7 +29,7 @@ const Admin = () => {
   const [emailsLoading, setEmailsLoading] = useState(true);
   const [stats, setStats] = useState({
     totalArtworks: 0,
-    totalLikes: 0,
+
     totalViews: 0,
     recentUploads: 0
   });
@@ -59,7 +59,7 @@ const Admin = () => {
       setArtworks(docs);
 
       // Calculate stats
-      const totalLikes = docs.reduce((sum, art: any) => sum + (art.likes || 0), 0);
+
       const now = Date.now() / 1000;
       const recentUploads = docs.filter((art: any) =>
         art.createdAt?.seconds > (now - 7 * 24 * 60 * 60)
@@ -67,7 +67,7 @@ const Admin = () => {
 
       setStats({
         totalArtworks: docs.length,
-        totalLikes,
+
         totalViews: docs.length * 15, // Simulated
         recentUploads
       });
@@ -159,7 +159,7 @@ const Admin = () => {
         prompt: data.prompt,
         description: data.description,
         model: data.model,
-        likes: 0,
+
         createdAt: serverTimestamp(),
         uploaderId: user ? user.uid : 'anon'
       });
@@ -301,16 +301,7 @@ const Admin = () => {
             <p className="text-sm text-muted-foreground">Total Artworks</p>
           </div>
 
-          <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-primary/10 rounded-lg">
-                <Heart className="text-primary" size={24} />
-              </div>
-              <TrendingUp className="text-emerald-400" size={20} />
-            </div>
-            <h3 className="text-2xl font-bold text-foreground mb-1">{stats.totalLikes}</h3>
-            <p className="text-sm text-muted-foreground">Total Likes</p>
-          </div>
+
 
           <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
             <div className="flex items-center justify-between mb-4">
@@ -433,9 +424,7 @@ const Admin = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                    Likes
-                  </th>
+
                   <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Date
                   </th>
@@ -473,20 +462,15 @@ const Admin = () => {
                     </td>
                     <td className="px-6 py-4">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${artwork.status === 'approved'
-                          ? 'bg-green-500/10 text-green-500'
-                          : artwork.status === 'rejected'
-                            ? 'bg-red-500/10 text-red-500'
-                            : 'bg-yellow-500/10 text-yellow-500'
+                        ? 'bg-green-500/10 text-green-500'
+                        : artwork.status === 'rejected'
+                          ? 'bg-red-500/10 text-red-500'
+                          : 'bg-yellow-500/10 text-yellow-500'
                         }`}>
                         {artwork.status || 'approved'}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-1 text-foreground">
-                        <Heart size={14} className={artwork.likes > 0 ? "fill-primary text-primary" : ""} />
-                        <span className="text-sm font-medium">{artwork.likes || 0}</span>
-                      </div>
-                    </td>
+
                     <td className="px-6 py-4 text-sm text-muted-foreground">
                       {artwork.createdAt?.seconds
                         ? new Date(artwork.createdAt.seconds * 1000).toLocaleDateString()

@@ -1,5 +1,5 @@
 import { Terminal, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
     searchTerm?: string;
@@ -18,6 +18,7 @@ export const Navbar = ({
     showSearch = true,
     showAdminControls = true
 }: NavbarProps) => {
+    const navigate = useNavigate();
     return (
         <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +49,7 @@ export const Navbar = ({
                         {showAdminControls && isAdmin && handleLogout && (
                             <>
                                 <button
-                                    onClick={() => window.location.href = '/#admin'}
+                                    onClick={() => navigate('/admin')}
                                     className="text-xs font-medium px-3 py-1 rounded-full bg-primary/20 border border-primary text-primary hover:bg-primary/30 transition-colors"
                                 >
                                     Admin Panel
