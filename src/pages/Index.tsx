@@ -19,6 +19,7 @@ import { UploadModal, UploadFormData } from '@/components/UploadModal';
 import { ArtworkCard } from '@/components/ArtworkCard';
 import { EmailGateModal } from '@/components/EmailGateModal';
 import { ShareModal } from '@/components/ShareModal';
+import { Helmet } from 'react-helmet-async';
 
 
 const MOCK_DATA = [
@@ -257,6 +258,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Prompt Vision Gallery - AI Art Prompts</title>
+        <meta name="description" content="Discover and share amazing AI-generated art prompts. Join the community of AI artists and explore a gallery of creative prompts." />
+        <meta property="og:title" content="Prompt Vision Gallery - AI Art Prompts" />
+        <meta property="og:description" content="Discover and share amazing AI-generated art prompts." />
+        <meta property="og:image" content="/og-image.png" />
+      </Helmet>
       <UploadModal
         isOpen={isUploadOpen}
         onClose={() => setIsUploadOpen(false)}

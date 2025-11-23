@@ -5,6 +5,7 @@ import { db } from '@/lib/firebase';
 import { ArtworkCard } from '@/components/ArtworkCard';
 import { Loader2, ArrowLeft } from 'lucide-react';
 import { ShareModal } from '@/components/ShareModal';
+import { Helmet } from 'react-helmet-async';
 
 const SharedArtwork = () => {
     const { id } = useParams();
@@ -67,6 +68,14 @@ const SharedArtwork = () => {
 
     return (
         <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+            <Helmet>
+                <title>{artwork.description ? `${artwork.description.slice(0, 50)}... - Prompt Vision Gallery` : 'Artwork - Prompt Vision Gallery'}</title>
+                <meta name="description" content={artwork.prompt || artwork.description || "View this amazing AI generated artwork on Prompt Vision Gallery"} />
+                <meta property="og:title" content={artwork.description || "AI Artwork"} />
+                <meta property="og:description" content={artwork.prompt || "View this amazing AI generated artwork"} />
+                {artwork.imageUrl && <meta property="og:image" content={artwork.imageUrl} />}
+                <meta name="twitter:card" content="summary_large_image" />
+            </Helmet>
             <div className="max-w-2xl mx-auto">
                 <button
                     onClick={() => navigate('/')}
