@@ -62,39 +62,7 @@ const Index = () => {
 
 
   // Anti-debugging protection
-  useEffect(() => {
-    const disableDevTools = (e: KeyboardEvent) => {
-      if (e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-        (e.ctrlKey && e.key === 'U')) {
-        e.preventDefault();
-        return false;
-      }
-    };
 
-    const disableRightClick = (e: MouseEvent) => {
-      e.preventDefault();
-      return false;
-    };
-
-    document.addEventListener('keydown', disableDevTools);
-    document.addEventListener('contextmenu', disableRightClick);
-
-    // Detect dev tools
-    const detectDevTools = setInterval(() => {
-      const threshold = 160;
-      if (window.outerWidth - window.innerWidth > threshold ||
-        window.outerHeight - window.innerHeight > threshold) {
-        document.body.innerHTML = '';
-      }
-    }, 1000);
-
-    return () => {
-      document.removeEventListener('keydown', disableDevTools);
-      document.removeEventListener('contextmenu', disableRightClick);
-      clearInterval(detectDevTools);
-    };
-  }, []);
 
   useEffect(() => {
     if (!isConfigured) {
@@ -353,7 +321,7 @@ const Index = () => {
               <button
                 key={model}
                 onClick={() => setSelectedModel(model)}
-                className={`px - 4 py - 1.5 rounded - full text - sm whitespace - nowrap transition - colors ${selectedModel === model
+                className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors ${selectedModel === model
                   ? 'bg-primary text-primary-foreground font-medium'
                   : 'bg-card text-muted-foreground hover:text-foreground hover:bg-muted'
                   } `}
