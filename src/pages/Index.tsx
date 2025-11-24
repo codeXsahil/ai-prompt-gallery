@@ -259,10 +259,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Prompt Vision Gallery - AI Art Prompts</title>
-        <meta name="description" content="Discover and share amazing AI-generated art prompts. Join the community of AI artists and explore a gallery of creative prompts." />
-        <meta property="og:title" content="Prompt Vision Gallery - AI Art Prompts" />
-        <meta property="og:description" content="Discover and share amazing AI-generated art prompts." />
+        <title>Prompt Vision Gallery - Best AI Art Prompts & Image Generation</title>
+        <meta name="description" content="Discover the best AI art prompts at Prompt Vision Gallery. Explore our collection of Nano Banana prompts, custom image generation prompts, and more for Stable Diffusion, Midjourney, and DALL-E." />
+        <meta property="og:title" content="Prompt Vision Gallery - Best AI Art Prompts & Image Generation" />
+        <meta property="og:description" content="Discover the best AI art prompts at Prompt Vision Gallery. Explore our collection of Nano Banana prompts, custom image generation prompts, and more." />
         <meta property="og:image" content="/og-image.png" />
       </Helmet>
       <UploadModal
@@ -300,13 +300,14 @@ const Index = () => {
       <div className="relative bg-gradient-to-b from-card to-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Discover the Art of{' '}
+            Discover the Best{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              Prompt Engineering
+              AI Art Prompts
             </span>
+            {' '}& Gallery
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            A curated collection of AI-generated imagery and the exact prompts used to create them.
+            A curated prompt gallery of AI-generated imagery including Nano Banana prompts, custom image generation prompts, and more.
             Explore, learn, and create.
           </p>
 

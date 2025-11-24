@@ -75,6 +75,23 @@ const SharedArtwork = () => {
                 <meta property="og:description" content={artwork.prompt || "View this amazing AI generated artwork"} />
                 {artwork.imageUrl && <meta property="og:image" content={artwork.imageUrl} />}
                 <meta name="twitter:card" content="summary_large_image" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [{
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://promptgallery.store/"
+                        }, {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Artwork",
+                            "item": `https://promptgallery.store/#/artwork/${id}`
+                        }]
+                    })}
+                </script>
             </Helmet>
             <div className="max-w-2xl mx-auto">
                 <button

@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://promptgallery.store/</loc>
+    <lastmod>2025-11-24T19:00:22.037Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,5 +15,47 @@
     <loc>https://promptgallery.store/terms</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/BqOW58lhaN5ndAQad95Z</loc>
+    <lastmod>2025-11-23T15:12:43.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/EciEIrhwnUIfmOldJN7T</loc>
+    <lastmod>2025-11-23T15:31:28.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/Uhxt58daZ3xtuAHTDvmD</loc>
+    <lastmod>2025-11-23T15:18:56.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/jvKnHlrCaiKT5G9wFLhX</loc>
+    <lastmod>2025-11-23T16:00:36.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/mu7CZGdDTJMpyuo18Dwh</loc>
+    <lastmod>2025-11-23T15:40:56.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/nKlTBLMS5NMcl5ktKw5S</loc>
+    <lastmod>2025-11-23T15:28:28.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://promptgallery.store/#/artwork/zUCkJrG46GbiNLTNTGBi</loc>
+    <lastmod>2025-11-23T15:20:13.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

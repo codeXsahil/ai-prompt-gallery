@@ -14,10 +14,13 @@ const queryClient = new QueryClient();
 import { PublicLayout } from "@/layouts/PublicLayout";
 import SharedArtwork from "./pages/SharedArtwork";
 
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 const App = () => (
   <HelmetProvider>
+    <Helmet>
+      <link rel="canonical" href="https://promptgallery.store/" />
+    </Helmet>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
