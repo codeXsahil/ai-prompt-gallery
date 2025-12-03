@@ -88,7 +88,7 @@ const SharedArtwork = () => {
                             "@type": "ListItem",
                             "position": 2,
                             "name": "Artwork",
-                            "item": `https://promptgallery.store/#/artwork/${id}`
+                            "item": `https://promptgallery.store/artwork/${id}`
                         }]
                     })}
                 </script>

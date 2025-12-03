@@ -1,0 +1,15 @@
+{
+    "short_name": "PromptGallery",
+    "name": "Prompt Vision Gallery",
+    "icons": [
+        {
+            "src": "/logo.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#020817",
+    "background_color": "#020817"
+}
